@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link type="text/css" rel="stylesheet" href="css/index.css" />
         <title></title>
     </head>
     <body>
@@ -11,6 +12,9 @@
                     <nav id="menu"></nav>
                     <div id="login">
                         <span><a href="acceso.php"><img src="icos/appbar.connect.png" alt="login" title="login" id="acceso" /></a></span>
+                    </div>
+                    <div>
+                        <?php include 'templates/titulo.php' ?>
                     </div>
                 </div>
             </div>

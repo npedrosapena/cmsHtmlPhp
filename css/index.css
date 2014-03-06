@@ -1,0 +1,16 @@
+
+/* 
+    Created on : 06-mar-2014, 10:07:25
+    Author     : nelson
+*/
+
+span{
+   float:left;
+   width: 80px;
+   height: 80px;
+   margin-left: -60px;
+}
+span:hover{
+    margin-left: 0;
+    z-index: 10;
+}

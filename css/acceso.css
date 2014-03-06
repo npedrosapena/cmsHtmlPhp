@@ -1,0 +1,33 @@
+/* 
+    Created on : 01-mar-2014, 19:25:09
+    Author     : nelson
+*/
+
+#content{
+    margin: 0 auto;
+    width: 20%;
+}
+form{
+    margin-top: 100px;
+    border:1px solid black;
+    box-shadow: 5px 5px 5px black;
+    letter-spacing: 2px;
+}
+#formulario{
+    padding:15px;
+}
+.botones{
+    margin-top: 20px;
+    margin-left: 40px;
+    border:2px outset black;
+    box-shadow: 1px 1px 1px black;
+}
+
+.botones:hover{
+    box-shadow: 3px 3px 5px black;
+}
+
+.botones:active{
+    border:2px inset black;
+    box-shadow: 1px 1px 0 black;
+}

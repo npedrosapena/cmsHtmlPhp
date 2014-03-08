@@ -1,4 +1,13 @@
 <?php
+/*
+ * el nombre del usuario está limitado a 8 caracteres desde la entrada
+ * en el html.
+ * 
+ * La clave se limitará a 8 caracteres también, en principio, como máximo
+ * sin ningún tipo de minimo (de momento)
+ */
+
+
 //incluimos el archivo donde tenemos la clase
 include './bbdd.php';
 

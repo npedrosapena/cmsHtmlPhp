@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <?php include_once './templates/metas.php'; ?>
         <link type="text/css" rel="stylesheet" href="css/acceso.css" />
+        <title></title>
     </head>
     <body>
         <div id="contentWrapper">
@@ -12,9 +14,9 @@
                         <input type="text" id="usuario" name="usuario" maxlength="5" required/>
                         <br/>
                         <label for="pass">Clave: </label>
-                        <input type="password" id="clave" name="clave" maxlength="5" required />
+                        <input type="password" id="pass" name="clave" maxlength="5" required />
                         <br/>
-                        <a href="#"><img src="icos/appbar.undo.curve.png" class="botones" id="volver" onclick="history.back()"/></a>
+                        <a href="#"><img src="icos/appbar.undo.curve.png" class="botones" id="volver" onclick="history.back()" alt="Login"/></a>
                         <input type="image" src="icos/appbar.power.png" class="botones"/>
                     </div>
                 </form>

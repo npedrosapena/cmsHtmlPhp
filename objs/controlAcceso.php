@@ -17,8 +17,8 @@ $seguridad= new Encriptar();
 $bbdd= new Conexion();
 
 //recogida y encriptación de datos
-$usuario=$seguridad->Codificar($_POST["usuario"]);
-$clave=$seguridad->Codificar($_POST["clave"]);
+$usuario=$seguridad->Codificar(filter_var($_POST["usuario"],FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+$clave=$seguridad->Codificar(filter_var($_POST["clave"],FILTER_SANITIZE_FULL_SPECIAL_CHARS));
 
 //acceso a bd
 $acceso=$bbdd->usuario($usuario, $clave);

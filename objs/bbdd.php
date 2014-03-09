@@ -21,6 +21,7 @@ class Conexion
     public function usuario($nombre,$clave)
     {
         $conexion= new mysqli($this->SERVIDOR,$this->USUARIO,  $this->CLAVE, $this->BD);//configuración conexión a bd
+        $row=array();
         
         //comprobamos si tenemos conexión con la bd
         if($conexion->connect_error)
@@ -28,14 +29,13 @@ class Conexion
                 die('Se ha producido un error en la conexi&oacute;n con la base de datos.<br /> C&oacute;digo de error:'.$conexion->connect_errno.' - '.$conexion->connect_error);
             }else
                 {
-                echo 'conexi&oacute;n establecida con la base de datos correctamente '.$conexion->host_info;
-                $consulta=$conexion->query("select * from usuarios where nomusr='.$nombre.' and clausr='.$clave.';");
-                var_dump($consulta);
+                    $query="select * from usuarios where nomusr='".$nombre."' and clausr='".$clave."';";
+                    $consulta=$conexion->query($query);
+                    $row=$consulta->fetch_array(MYSQLI_ASSOC);
                 }
-            
-                $conexion->close();
-        
-       
+                    $conexion->close();
+                    
+                    return $row;
     }
 }
         

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <?php include_once './templates/metas.php' ;?>
         <link type="text/css" rel="stylesheet" href="css/index.css" />
         <title></title>
     </head>

@@ -10,13 +10,24 @@
 
 //incluimos el archivo donde tenemos la clase
 include './bbdd.php';
+include './Encriptar.php';
 
-
-$usuario=$_POST["usuario"];
-echo " sin encriptar: ".$usuario;
-$usuario=CRYPT($usuario.'$2a$07$marianorajoyparvodelculo!$');
-echo " encriptado: ".$usuario;
-
+//instancia de objetos
+$seguridad= new Encriptar();
 $bbdd= new Conexion();
-$bbdd->usuario($usuario, $_POST['clave']);
+
+//recogida y encriptación de datos
+$usuario=$seguridad->Codificar($_POST["usuario"]);
+$clave=$seguridad->Codificar($_POST["clave"]);
+
+//acceso a bd
+$acceso=$bbdd->usuario($usuario, $clave);
+
+if($acceso!=NULL)
+    {
+        echo "Bienvenido";
+    }else
+        {
+        echo 'el usuario o la clave no son v&aacute;lidos, por favor, compruebe que los datos introducidos son correctos';
+        }
 

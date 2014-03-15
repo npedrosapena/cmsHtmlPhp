@@ -37,6 +37,41 @@ class Conexion
                     
                     return $row;
     }
+    
+    public function devolverValores($datos)
+    {
+        $campos=null;
+            
+            for($c=0;$c<=count($datos)-1;$c++)://recorremos el array de los datos
+                
+                $var=(str_replace("\'","",$datos[$c]));//le quito las comillas
+  
+                if(is_null($var))//si es un null
+                    {
+                        if($c<1)//para el primer valor
+                            {
+                                $campos="null";
+                            }else//para otras posiciones
+                                {
+                                    $campos=$campos.",null,";
+                                }
+                    }
+                $campos=$campos."'".$datos[$c]."',";
+            endfor;
+
+            $campos=trim($campos,',');//quito la última , que queda al final
+            return $campos;//devolvemos la cadena con todos los valores
+     }
+     
+    public function DbEscribir($datos, $tabla)
+     {
+        $conexion= new mysqli($this->SERVIDOR,$this->USUARIO,  $this->CLAVE, $this->BD);//configuración conexión a bd
+        
+                $query="insert into `".$tabla."` (`codusr`, `nomusr`, `clausr`)VALUES (".$this->devolverValores($datos).");";
+                echo '<br />Datos:',$query."<br />";
+               // $consulta=$conexion->query($query);
+                $conexion->close();
+     }
 }
         
 ?>

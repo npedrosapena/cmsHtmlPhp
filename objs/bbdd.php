@@ -18,6 +18,13 @@ class Conexion
         
     }
     
+    /**Selecciona un usuario y una clave de la base de datos y devuelve 
+     * un array asociativo con los datos del usuario
+     * 
+     * @param type $nombre
+     * @param type $clave
+     * @return type
+     */
     public function usuario($nombre,$clave)
     {
         $conexion= new mysqli($this->SERVIDOR,$this->USUARIO,  $this->CLAVE, $this->BD);//configuración conexión a bd
@@ -38,8 +45,14 @@ class Conexion
                     return $row;
     }
     
+    /**En esta primera versión, devuelve un String con la cadena completa para 
+     * introducir los datos en una consulta insert sin importar la longitud de esta
+     * 
+     * @param type $datos
+     * @return type
+     */
     public function devolverValores($datos)
-    {
+    {//posible nuevo nombre devolverCampos
         $campos=null;
             
             for($c=0;$c<=count($datos)-1;$c++)://recorremos el array de los datos
@@ -63,14 +76,81 @@ class Conexion
             return $campos;//devolvemos la cadena con todos los valores
      }
      
+     /**Inserta los datos en la bd, pasandole un array de datos y el nombre de la tabla
+      * 
+      * @param type $datos
+      * @param type $tabla
+      */
     public function DbEscribir($datos, $tabla)
      {
         $conexion= new mysqli($this->SERVIDOR,$this->USUARIO,  $this->CLAVE, $this->BD);//configuración conexión a bd
         
                 $query="insert into `".$tabla."` (`codusr`, `nomusr`, `clausr`)VALUES (".$this->devolverValores($datos).");";
                 echo '<br />Datos:',$query."<br />";
-               // $consulta=$conexion->query($query);
+                //$consulta=$conexion->query($query);
                 $conexion->close();
+     }
+     
+     /**
+      * 
+      * @param type $id
+      * @return type
+      */
+     public function consultas($id)
+     {
+         $conexion= new mysqli($this->SERVIDOR,$this->USUARIO,  $this->CLAVE, $this->BD);//configuración conexión a bd
+         $query="select `content` from `metas` where `categoriameta` in (select `idcategoria` from `categoriametas` where `catmetaid`='".$id."');";
+ 
+         $consulta=$conexion->query($query);
+         $conexion->close();
+         $row=$consulta->fetch_array(MYSQLI_ASSOC);
+     
+        return $row;
+         
+     }
+     /**Pasándole un Id, nos devuelve el nombre de la categoria
+      * 
+      * @param type $id
+      * @return type
+      */
+     public function categoriasMeta($id)
+     {
+        $conexion= new mysqli($this->SERVIDOR,$this->USUARIO,  $this->CLAVE, $this->BD);//configuración conexión a bd
+        $query="select `name`from `categoriametas` where idcategoria='".$id."';";
+        $consulta=$conexion->query($query);
+        $conexion->close();
+        $row=$consulta->fetch_array(MYSQLI_ASSOC);
+        return $row;
+     }
+     
+     /**Pasándole un campo, devuelve el valor de su contenido
+      * 
+      * @param type $campo
+      * @return type
+      */
+     public function descripcionMetas($campo)
+     {
+         $query="select `content` from `metas` where `categoriameta`in(select `idcategoria` from `categoriametas` where `name`='".$campo."');";
+         $conexion= new mysqli($this->SERVIDOR,$this->USUARIO,  $this->CLAVE, $this->BD);
+         $consulta=$conexion->query($query);
+         $conexion->close();
+         $row=$consulta->fetch_array(MYSQLI_ASSOC);
+         return $row;
+     }
+     
+     /**Nos devuelve el numero de filas en una tabla
+      * 
+      * @param type $tabla
+      * @return type
+      */
+     public function contadorRows($tabla)
+     {
+          $conexion= new mysqli($this->SERVIDOR,$this->USUARIO,  $this->CLAVE, $this->BD);//configuración conexión a bd
+          $query="select count(*) from `".$tabla."`;";
+          $consulta=$conexion->query($query);
+          $conexion->close();
+          $row=$consulta->fetch_array(MYSQLI_NUM);
+          return $row;
      }
 }
         

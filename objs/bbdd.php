@@ -13,7 +13,7 @@ class Conexion
     private $SERVIDOR="localhost";
     private $BD="cms";
     
-    function __contruct()
+    function __construct()
     {
         
     }
@@ -86,7 +86,7 @@ class Conexion
         $conexion= new mysqli($this->SERVIDOR,$this->USUARIO,  $this->CLAVE, $this->BD);//configuración conexión a bd
         
                 $query="insert into `".$tabla."` (`codusr`, `nomusr`, `clausr`)VALUES (".$this->devolverValores($datos).");";
-                echo '<br />Datos:',$query."<br />";
+                //echo '<br />Datos:',$query."<br />";
                 //$consulta=$conexion->query($query);
                 $conexion->close();
      }

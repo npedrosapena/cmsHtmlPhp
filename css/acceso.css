@@ -8,6 +8,7 @@
     width: 20%;
 }
 form{
+    border-radius: 5px;
     margin-top: 100px;
     border:1px solid black;
     box-shadow: 5px 5px 5px black;
@@ -17,14 +18,23 @@ form{
     padding:15px;
 }
 .botones{
+    border-radius: 5px;
+    border-top-right-radius: 35px;
+    border-bottom-left-radius: 35px;
     margin-top: 20px;
     margin-left: 40px;
     border:2px outset black;
     box-shadow: 1px 1px 1px black;
+    transition: all 0.2s ease;
 }
 
 .botones:hover{
     box-shadow: 3px 3px 5px black;
+    transition: all 0.2s ease;
+    border-radius: 5px;
+    border-top-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+   
 }
 
 .botones:active{

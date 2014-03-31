@@ -18,7 +18,7 @@ if(isset($_SESSION['usuario']))
                 <div id="cuerpo">
                     <ul class="categorias">
                         <li class="ElementosCategorias" id="config">
-                            <a href="#" class="content">
+                            <a href="configuracion.php" class="content">
                                 <img src="../icos/appbar.cog.png" alt="Configuraci&oacute;n"/>
                                 <h3>Configuraci&oacute;n</h3>
                                 <p class="sumary"> Acceder a la configuraci&oacute;n</p>

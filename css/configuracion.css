@@ -7,12 +7,13 @@ div#titulo h3{
     letter-spacing: 2px;
     font-family: "Helvetica";
 }
+
 ul.categorias
 {
     text-align: center;
     width: 160px;
     display: inline;
-    float: none;
+    float: inside;
     clear: both;
     overflow: hidden;
     margin: 0px;
@@ -96,4 +97,14 @@ p.sumary:hover
 {
     transition: all 0.3s ease 0.2s;
     opacity: 0.6;
+}
+
+/*Div Configuracion*/
+
+#divmeta,#divtitle,#divusers
+{
+ clear:both;
+ box-shadow: 5px 5px 15px black;
+ width:80%;
+ margin:5px auto;
 }

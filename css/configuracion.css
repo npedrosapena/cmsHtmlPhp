@@ -103,8 +103,48 @@ p.sumary:hover
 
 #divmeta,#divtitle,#divusers
 {
- clear:both;
- box-shadow: 5px 5px 15px black;
- width:80%;
- margin:5px auto;
+ clear:left;
+/* box-shadow: 5px 5px 15px black;*/
+ width:100%;
+ height: 550px;
+ margin:100px auto;
+}
+
+.box { 
+    width:100%; 
+    height:550px; 
+    background:#fcfcfc; 
+    margin:40px auto; 
+}
+.effect2 { 
+    position: relative; 
+}
+
+.effect2:before, .effect2:after { 
+    z-index: -1; 
+    position: absolute; 
+    content: ""; 
+    bottom: 25px; 
+    left: 10px; 
+    width: 50%; 
+    top: 80%; 
+    max-width:300px; 
+    background: #777; 
+    -webkit-box-shadow: 0 35px 20px #777; 
+    -moz-box-shadow: 0 35px 20px #777; 
+    box-shadow: 0 35px 20px #777; 
+    -webkit-transform: rotate(-6deg); 
+    -moz-transform: rotate(-6deg); 
+    -o-transform: rotate(-6deg); 
+    -ms-transform: rotate(-6deg); 
+    transform: rotate(-6deg); 
+} 
+.effect2:after { 
+    -webkit-transform: rotate(6deg); 
+    -moz-transform: rotate(6deg); 
+    -o-transform: rotate(6deg); 
+    -ms-transform: rotate(6deg); 
+    transform: rotate(6deg); 
+    right: 10px;
+    left: auto; 
 }

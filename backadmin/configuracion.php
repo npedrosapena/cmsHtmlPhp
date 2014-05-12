@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include_once '../templates/metas.php'; ?>
+        <?php 
+            include_once '../templates/metas.php'; 
+            include_once '../objs/bbdd.php';
+            
+            $objeto = new Conexion();
+        ?>
         <link type="text/css" rel="stylesheet" href="../css/configuracion.css" />
-         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> 
         <title>Configuraci&oacute;n</title>
     </head>
     <body>
@@ -34,13 +39,34 @@
                 </ul>
             </div>
         </div>
-        <div id="divmeta">
+        <div id="divmeta" class="box effect2">
             <h1>Metaetiquetas</h1>
+            <div id="divMetas">
+                Meta: 
+                <select>
+                    
+                    <?php
+                        $resultado=$objeto->contadorRows("categoriametas");
+                        
+                        for($c=1;$c<=$resultado[0];$c++)
+                        {
+                         $nombres=   $objeto->categoriasMeta($c);
+                         echo "<option>".$nombres['name']."</option>";   
+                        }
+                       
+                    ?>
+                    
+                </select>
+                
+               
+               
+                Introduzca valores:<input type="text" value="<?php echo $objeto->categoriasMeta(1)?>" />
+            </div>
         </div>
-        <div id="divusers">
+        <div id="divusers" class="box effect2">
             <h1>Usuarios</h1>
         </div>
-        <div id="divtitle">
+        <div id="divtitle" class="box effect2">
             <h1>Titulo de la web</h1>
         </div>
         <script src="../js/configuracion.js"></script> 
